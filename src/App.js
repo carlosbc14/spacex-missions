@@ -1,25 +1,19 @@
-import logo from './logo.svg';
+import { Container, Image } from '@chakra-ui/react';
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
 
-function App() {
+import logo from './assets/logo-spacex.png';
+import LaunchList from './components/LaunchList';
+import LaunchDetails from './components/LaunchDetails';
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container maxW="80%" centerContent>
+      <Image m={8} src={logo} width={455} />
+      <Routes>
+        <Route path="/" element={<LaunchList />} />
+        <Route path="/launch/:launchId" element={<LaunchDetails />} />
+      </Routes>
+    </Container>
   );
 }
-
-export default App;
